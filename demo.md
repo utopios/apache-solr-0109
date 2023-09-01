@@ -41,3 +41,7 @@
     TOTAL HEAP SIZE = FILTER CACHE * (Size total doc / 8) * num of Cores + field Value Caches * num of Cores (MISC cache(1 -> 4 G))  
 
     # Hash password basic authentication psswd (sha256)*dynamicSalt base64
+
+    # EndPoint optimize => http://localhost:8983/solr/mycollection/update?optimize=true
+
+    # EndPoint reload => http://localhost:8983/solr/admin/collections?action=RELOAD&name=mycollection
