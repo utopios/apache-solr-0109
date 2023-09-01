@@ -440,6 +440,7 @@
       <tokenizer name="standard"/>
       <filter name="turkishLowercase"/>
       <filter words="lang/stopwords_tr.txt" ignoreCase="false" name="stop"/>
+      <filter words="lang/stopwords_en.txt" class="solr.StopFilterFactory" ignoreCase="false" name="stop"/>
       <filter language="Turkish" name="snowballPorter"/>
     </analyzer>
   </fieldType>
