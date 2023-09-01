@@ -51,7 +51,7 @@ curl -X POST -H 'Content-type:application/json' --data-binary  '{
 }' http://localhost:8983/solr/international_documents/schema
 ```
 
-3. RequestHandler
+3. RequestHandler => à ajouter dans le fichier solrconfig.xml => /var/solr/data/<nom_core>
 ```xml
 <requestHandler name="search" class="solr.SearchHandler">
 <lst>
