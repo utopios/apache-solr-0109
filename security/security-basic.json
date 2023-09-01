@@ -5,5 +5,12 @@
         "credentials": {
             "solr": "BEEOKqLunoBudHycbscjmrimk1mwUAbxMfSGZja83eg= 4jzSy9mpVw8NSIbMA6E2khgBBxlN3ZYVsAW0un9pmoI="
         }
+    },
+    "authorization": {
+        "class": "solr.RuleBasedAuthorizationPlugin",
+        "permissions":  [
+            {"name": "security-edit", "role": "admin"}
+        ],
+        "user-role": {"solr": "admin"}
     }
 }
