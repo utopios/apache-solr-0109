@@ -54,7 +54,7 @@ curl -X POST -H 'Content-type:application/json' --data-binary  '{
 3. RequestHandler => à ajouter dans le fichier solrconfig.xml => /var/solr/data/<nom_core>
 ```xml
 <requestHandler name="/search" class="solr.SearchHandler">
-<lst>
+<lst name="defaults">
     <str name="df">title_search</str>
     <str name="qf">title_search</str>
     <str name="rows">20</str>
