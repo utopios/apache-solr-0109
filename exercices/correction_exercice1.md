@@ -4,15 +4,16 @@
 2. 
 ```bash
 curl -X POST -H 'Content-type:application/json' --data-binary  '{
-    "add-field": [
-    {"name":"title_en", "type":"text_en", "stored":true, "indexed":true, 
-    "indexAnalyzer": {
+    "add-field-type": {
+        "name":"custom_text",
+        "class": "solr.TextField",
+        "indexAnalyzer": {
         "tokenizer": {
             "class": "solr.StandardTokenizerFactory"
         },
         "filters": [
             {"class": "solr.LowerCaseFilterFactory"},
-            {"class": "solr.StopFilterFactory", "words": "lang/stopword_en.txt", "ignoreCase": "true"}
+            {"class": "solr.StopFilterFactory", "words": "lang/stopwords_en.txt", "ignoreCase": "true"}
         ]
     },
     "queryAnalyzer": {
@@ -21,9 +22,13 @@ curl -X POST -H 'Content-type:application/json' --data-binary  '{
         },
         "filters": [
             {"class": "solr.LowerCaseFilterFactory"},
-            {"class": "solr.StopFilterFactory", "words": "lang/stopword_en.txt", "ignoreCase": "true"}
+            {"class": "solr.StopFilterFactory", "words": "lang/stopwords_en.txt", "ignoreCase": "true"}
         ]
     }
+    },
+    "add-field": [
+    {"name":"title_en", "type":"custom_text", "stored":true, "indexed":true
+    
     },
     {"name":"title_fr", "type":"text_fr", "stored":true, "indexed":true},
     {"name":"title_es", "type":"text_es", "stored":true, "indexed":true},
@@ -54,4 +59,27 @@ curl -X POST -H 'Content-type:application/json' --data-binary  '{
     <str name="rows">20</str>
 </lst>
 </requestHandler>
+```
+
+4. test 
+- ajout de documents 
+```bash
+curl -X POST -H 'Content-type:application/json' --data-binary '[
+  {
+    "title_en":"This is a test document in English",
+    "description_en":"This document is used for testing purposes",
+    "pub_date":"2023-01-01T00:00:00Z"
+  },
+  {
+    "title_fr":"Ceci est un document de test en français",
+    "description_fr":"Ce document est utilisé à des fins de test",
+    "pub_date":"2023-01-01T00:00:00Z"
+  },
+  {
+    "title_es":"Este es un documento de prueba en español",
+    "description_es":"Este documento se utiliza para fines de prueba",
+    "pub_date":"2023-01-01T00:00:00Z"
+  }
+]' http://localhost:8983/solr/international_documents/update?commit=true
+
 ```
