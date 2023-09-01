@@ -714,6 +714,7 @@
   <lst name="defaults">
     <str name="echoParams">explicit</str>
     <str name="qf">title_search</str>
+    <str name="df">title_search</str>
     <str name="rows">20</str>
   </lst>
 </requestHandler>
