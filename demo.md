@@ -35,3 +35,7 @@
         ]
       }
     ```
+
+    # Formule de calcule de cache HEAP 
+
+    TOTAL HEAP SIZE = FILTER CACHE * (Size total doc / 8) * num of Cores + field Value Caches * num of Cores (MISC cache(1 -> 4 G))  
