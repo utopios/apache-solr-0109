@@ -1,0 +1,21 @@
+{
+    "authentication": {
+        "blockUnknown": true,
+        "class": "solr.JWTAuthPlugin",
+        "jwk": {
+            "kty": "oct",
+            "use": "sig",
+            "kid": "k1",
+            "alg":"HS256",
+            "k": "base64(Sign_KEY)"
+        },
+        "aud":"solr"
+    },
+    "authorization": {
+        "class": "solr.RuleBasedAuthorizationPlugin",
+        "permissions":  [
+            {"name": "security-edit", "role": "admin"}
+        ],
+        "user-role": {"solr": "admin"}
+    }
+}
