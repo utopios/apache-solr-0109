@@ -201,8 +201,8 @@
 # Settings for authentication
 # Please configure only one of SOLR_AUTHENTICATION_CLIENT_BUILDER or SOLR_AUTH_TYPE parameters
 #SOLR_AUTHENTICATION_CLIENT_BUILDER="org.apache.solr.client.solrj.impl.PreemptiveBasicAuthClientBuilderFactory"
-#SOLR_AUTH_TYPE="basic"
-#SOLR_AUTHENTICATION_OPTS="-Dbasicauth=solr:SolrRocks"
+SOLR_AUTH_TYPE="kerberos"
+SOLR_AUTHENTICATION_OPTS="-Djava.security.auth.login.config=/path/to/jaas.conf -Djava.security.krb5.conf=/path/to/krb5.conf"
 
 # Settings for ZK ACL
 #SOLR_ZK_CREDS_AND_ACLS="-DzkACLProvider=org.apache.solr.common.cloud.DigestZkACLProvider \

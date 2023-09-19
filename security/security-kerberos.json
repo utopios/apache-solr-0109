@@ -1,0 +1,14 @@
+{
+    "authentication": {
+        "class": "org.apache.solr.security.KerberosPlugin",
+        "keytab": "/datakerberos/solr.keytab",
+        "principal": "solr/hostname@YOUR_REALM"
+      },
+    "authorization": {
+        "class": "solr.RuleBasedAuthorizationPlugin",
+        "permissions":  [
+            {"name": "security-edit", "role": "admin"}
+        ],
+        "user-role": {"solr": "admin"}
+    }
+}
