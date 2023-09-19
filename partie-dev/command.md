@@ -68,7 +68,7 @@ curl http://localhost:8983/solr/films/schema -X POST -H 'Content-type:applicatio
           },
           {
             "name":"directed_by",
-            "type":"text_general",
+            "type":"string",
             "multiValued":false,
             "stored":true,
             "docValues":true
