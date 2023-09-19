@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  solr:
+    image: solr
+    ports:
+      - "8983:8983"
+    
+    command:
+      - solr-precreate
+      - contact
+   
+
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: solr
+      MYSQL_DATABASE: solr
+      MYSQL_USER: solr
+      MYSQL_PASSWORD: solr
+    ports:
+      - "3307:3306"
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
