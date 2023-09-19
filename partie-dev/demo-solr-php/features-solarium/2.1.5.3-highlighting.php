@@ -8,11 +8,11 @@ $client = new Solarium\Client($adapter, $eventDispatcher, $config);
 
 // get a select query instance
 $query = $client->createSelect();
-$query->setQuery('name:"ipod"');
+$query->setQuery('name:"inception"');
 
 // get highlighting component and apply settings
 $hl = $query->getHighlighting();
-$hl->setFields('name, features');
+$hl->setFields('name, genre');
 $hl->setSimplePrefix('<b>');
 $hl->setSimplePostfix('</b>');
 

@@ -13,12 +13,12 @@ $query = $client->createSelect();
 $facetSet = $query->getFacetSet();
 
 // create two facet pivot instances
-$facet = $facetSet->createFacetPivot('cat-popularity-instock');
-$facet->addFields('cat,popularity,inStock');
+$facet = $facetSet->createFacetPivot('genre-date');
+$facet->addFields('genre,initial_release_date');
 $facet->setMinCount(0);
 
-$facet = $facetSet->createFacetPivot('popularity-cat');
-$facet->addFields('popularity,cat');
+$facet = $facetSet->createFacetPivot('directedby-genre');
+$facet->addFields('genre,directed_by');
 
 // this executes the query and returns the result
 $resultset = $client->select($query);
@@ -27,14 +27,14 @@ $resultset = $client->select($query);
 echo 'NumFound: '.$resultset->getNumFound();
 
 // display facet results
-$facetResult = $resultset->getFacetSet()->getFacet('cat-popularity-instock');
-echo '<h3>cat &raquo; popularity &raquo; instock</h3>';
+$facetResult = $resultset->getFacetSet()->getFacet('genre-date');
+//echo '<h3>cat &raquo; popularity &raquo; instock</h3>';
 foreach ($facetResult as $pivot) {
     displayPivotFacet($pivot);
 }
 
-$facetResult = $resultset->getFacetSet()->getFacet('popularity-cat');
-echo '<h3>popularity &raquo; cat</h3>';
+$facetResult = $resultset->getFacetSet()->getFacet('directedby-genre');
+//echo '<h3>popularity &raquo; cat</h3>';
 foreach ($facetResult as $pivot) {
     displayPivotFacet($pivot);
 }
